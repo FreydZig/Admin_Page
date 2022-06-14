@@ -1,0 +1,76 @@
+﻿@model Project
+
+<form method="post">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary">Create Project</h2>
+			<hr />
+		</div>
+		@*<div asp-validation-summary="All"></div>*@
+		<div class="mb-3">
+			<label asp-for="Name"></label>
+			<div>
+				<input asp-for="Name" class="from-control"/>
+			</div>
+			<span asp-validation-for="Name" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label>Company Customer</label>
+			<select class="form-select" asp-for="Name_company_cust" class="from-control">
+				@foreach(var obj in ViewBag.CompanyCust)
+				{
+					<option >@obj.Name</option>
+				}
+			</select>
+		</div>
+		<div class="mb-3">
+			<label>Company Executor</label>
+			<select class="form-select" asp-for="Name_company_exe" class="from-control">
+				@foreach(var obj in ViewBag.CompanyExe)
+				{
+					<option >@obj.Name</option>
+				}
+			</select>
+		</div>
+		<div class="mb-3">
+			<label>Director</label>
+			<select class="form-select" asp-for="Name_director" class="from-control">
+				@foreach(var obj in ViewBag.Worker)
+				{
+					<option >@obj.Name</option>
+				}
+			</select>
+		</div>
+		<div class="mb-3">
+			<label>Date Start (MM:DD:YYYY)</label>
+			<div>
+				<input asp-for="Date_start" class="from-control"/>
+			</div>
+			<span asp-validation-for="Date_start" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label>Date End (MM:DD:YYYY)</label>
+			<div>
+				<input asp-for="Date_end" class="from-control"/>
+			</div>
+			<span asp-validation-for="Date_end" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label>Priority</label>
+			<div>
+				<input asp-for="Priority" class="from-control"/>
+			</div>
+			<span asp-validation-for="Priority" class="text-danger"></span>
+		</div>
+		<button type="submit" class="btn btn-outline-success" style="width:150px">Create</button>
+		<a asp-controller="Project" asp-action="Index" class="btn btn-outline-warning" style="width:150px">
+			Back
+		</a>
+	</div>
+</form>
+
+@section Scripts{
+	@{
+		<partial name="_ValidationScriptsPartial"/>
+	}
+}
